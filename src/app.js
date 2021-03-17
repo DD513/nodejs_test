@@ -1,8 +1,8 @@
 import express from 'express';
-import cookieParser from 'cookie-parser';
-import path from 'path';
+import cookieParser from 'cookie-parser'; //解析cookie標頭
+import path from 'path'; //保存路徑
 import cors from 'cors';
-import morgan from 'morgan';
+import morgan from 'morgan'; //http的請求記錄器
 import session from 'express-session';
 import passport from 'passport';
 import http from 'http';
