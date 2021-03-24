@@ -3,6 +3,7 @@ import _ from 'lodash';
 const { users } = models;
 class userController {
     getUser = async (req, res) => {
+        //getUser 取得資料
         // const pureCommand = await models.sequelize.query('select * from users', {
         //   type: QueryTypes.SELECT
         // });
@@ -17,17 +18,45 @@ class userController {
           };
         });
         res.status(200).json({ user });
-      };
+    };
     
-      postUser = async (req, res) => {
-        const { body } = req;
-        const { email, password } = body;
-        const user = await users.create({
+    postUser = async (req, res) => {
+      //postUser 新增資料
+      const { body } = req;
+      const { email, password } = body;
+      const user = await users.create({
+        email,
+        password
+      });
+      res.status(200).json({ user });
+    };
+
+    deleteUser = async (req, res) => {
+      const { body } = req;
+      const { email } = body;
+      const user = await users.destroy({
+        where: {
           email,
-          password
-        });
-        res.status(200).json({ user });
-      };
+        }
+      });
+      res.status(200).json({ user });
+    }
+
+    patchUser = async (req, res) => {
+      //patch 修改
+      const {body} = req;
+      let { id } = req.body;
+
+      const { email, password } = body;
+      const user = await users.update({ password }, {
+        where: {
+          email
+        }
+      });
+      res.status(200).json({ user });
+    }
+    
+
 }
 
 export default new userController();

@@ -5,8 +5,8 @@ const router = Router();
 
 router.get('/', userController.getUser);
 router.post('/', userController.postUser);
-router.patch('/');
-router.delete('/');
+router.patch('/', userController.patchUser);
+router.delete('/', userController.deleteUser);
 
 
 export default router;
