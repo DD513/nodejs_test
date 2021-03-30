@@ -1,5 +1,6 @@
 import models from '../models/index';
 import _ from 'lodash';
+import UserService from '../service/user';
 const { users } = models;
 class userController {
     getUser = async (req, res) => {
